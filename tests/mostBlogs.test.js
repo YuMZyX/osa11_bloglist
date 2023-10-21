@@ -1,6 +1,6 @@
 const mostBlogs = require('../utils/list_helper').mostBlogs
 
-describe.skip('author with most blogs', () => {
+describe('author with most blogs', () => {
   const listWithOneBlog = [
     {
       _id: '5a422aa71b54a676234d17f8',

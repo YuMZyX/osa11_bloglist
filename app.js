@@ -16,14 +16,15 @@ logger.info('connecting to', config.MONGODB_URI)
 mongoose
   .connect(config.MONGODB_URI)
   .then(() => {
-    console.log('connected to MongoDB')
+    console.log('connected to MongoDB') // eslint-disable-line no-console
   })
   .catch((error) => {
-    console.log('error connecting to MongoDB:', error.message)
+    console.log('error connecting to MongoDB:', error.message) // eslint-disable-line no-console
   })
 
 app.use(cors())
 app.use(express.json())
+app.use(express.static('dist'))
 app.use(middleware.requestLogger)
 app.use(middleware.tokenExtractor)
 

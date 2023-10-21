@@ -1,6 +1,6 @@
 const favoriteBlog = require('../utils/list_helper').favoriteBlog
 
-describe.skip('favorite blog, with most likes', () => {
+describe('favorite blog, with most likes', () => {
   const listWithOneBlog = [
     {
       _id: '5a422aa71b54a676234d17f8',
