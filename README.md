@@ -1,2 +1,3 @@
-# osa11_bloglist
-Full stack open kurssin osa11 teht. 11.20-21 repositorio.
+# osa4
+
+Full stack open kurssin osa4 repositorio.
