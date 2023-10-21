@@ -63,5 +63,8 @@
   },
   "jest": {
     "testEnvironment": "node"
+  },
+  "engines": {
+    "node": ">=18.17.1 <19.0.0"
   }
 }
