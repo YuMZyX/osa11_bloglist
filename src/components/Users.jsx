@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
-import { Table } from "react-bootstrap";
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { Table } from 'react-bootstrap'
 
 const Users = ({ users }) => {
   if (users.length === 0) {
-    return null;
+    return null
   }
 
   return (
@@ -32,7 +33,7 @@ const Users = ({ users }) => {
         </tbody>
       </Table>
     </div>
-  );
-};
+  )
+}
 
-export default Users;
+export default Users

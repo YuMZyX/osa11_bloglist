@@ -1,21 +1,22 @@
-import { useParams } from "react-router-dom";
-import { likeBlog } from "../reducers/blogReducer";
-import { setNotification } from "../reducers/notificationReducer";
-import { useDispatch } from "react-redux";
-import { Button } from "react-bootstrap";
+import React from 'react'
+import { useParams } from 'react-router-dom'
+import { likeBlog } from '../reducers/blogReducer'
+import { setNotification } from '../reducers/notificationReducer'
+import { useDispatch } from 'react-redux'
+import { Button } from 'react-bootstrap'
 
 const Blog = ({ blogs }) => {
-  const dispatch = useDispatch();
-  const id = useParams().id;
-  const blog = blogs.find((b) => b.id === id);
+  const dispatch = useDispatch()
+  const id = useParams().id
+  const blog = blogs.find((b) => b.id === id)
 
   const update = (blog) => {
-    dispatch(likeBlog(blog));
-    dispatch(setNotification(`You liked: ${blog.title}`));
-  };
+    dispatch(likeBlog(blog))
+    dispatch(setNotification(`You liked: ${blog.title}`))
+  }
 
   if (!blog) {
-    return null;
+    return null
   }
 
   return (
@@ -27,7 +28,7 @@ const Blog = ({ blogs }) => {
       <br />
       Added by {blog.user.name}
     </div>
-  );
-};
+  )
+}
 
-export default Blog;
+export default Blog

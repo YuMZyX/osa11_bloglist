@@ -1,12 +1,13 @@
-import { useParams } from "react-router-dom";
-import { ListGroup } from "react-bootstrap";
+import React from 'react'
+import { useParams } from 'react-router-dom'
+import { ListGroup } from 'react-bootstrap'
 
 const User = ({ users }) => {
-  const id = useParams().id;
-  const user = users.find((u) => u.id === id);
+  const id = useParams().id
+  const user = users.find((u) => u.id === id)
 
   if (!user) {
-    return null;
+    return null
   }
   return (
     <div>
@@ -22,7 +23,7 @@ const User = ({ users }) => {
         ))}
       </ListGroup>
     </div>
-  );
-};
+  )
+}
 
-export default User;
+export default User

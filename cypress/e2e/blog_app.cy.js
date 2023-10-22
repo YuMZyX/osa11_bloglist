@@ -22,7 +22,7 @@ describe('Blog app', function () {
       cy.get('#password').type('testpw')
       cy.get('#login-button').click()
 
-      cy.contains('Test User logged in')
+      cy.contains('Test User')
     })
 
     it('fails with wrong credentials', function () {
@@ -31,7 +31,7 @@ describe('Blog app', function () {
       cy.get('#login-button').click()
 
       cy.contains('Invalid username or password')
-      cy.get('html').should('not.contain', 'Test User logged in')
+      cy.get('html').should('not.contain', 'Test User')
     })
   })
 
@@ -42,9 +42,9 @@ describe('Blog app', function () {
 
     it('A blog can be created', function () {
       cy.contains('Create new blog').click()
-      cy.get('#titleInput').type('Creating blog with cypress')
-      cy.get('#authorInput').type('Test User')
-      cy.get('#urlInput').type('www.test.com')
+      cy.get('#title').type('Creating blog with cypress')
+      cy.get('#author').type('Test User')
+      cy.get('#url').type('www.test.com')
       cy.get('#createBlog').click()
       cy.contains('A new blog:')
       cy.contains('Creating blog with cypress')
@@ -79,7 +79,7 @@ describe('Blog app', function () {
         cy.contains('First test blog').parent().find('button').as('viewButton')
         cy.get('@viewButton').click()
         cy.get('button:visible').contains('Remove').click()
-        cy.contains('Deleted First test blog')
+        cy.contains('You deleted: First test blog')
         cy.get('html').should('not.contain', 'www.test.com')
       })
 

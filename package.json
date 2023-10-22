@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node index.js",
-    "dev": "cross-env NODE_ENV=development nodemon index.js",
+    "dev": "vite --host",
     "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
     "start:test": "cross-env NODE_ENV=test node index.js",
-    "lint": "eslint .",
+    "lint": "eslint ./**/*.{js,jsx}",
     "build": "vite build",
     "preview": "vite preview",
     "cypress:open": "cypress open",

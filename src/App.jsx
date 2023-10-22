@@ -1,61 +1,62 @@
-import { useEffect, useState, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import BlogList from "./components/BlogList";
-import blogService from "./services/blogs";
-import Notification from "./components/Notification";
-import Togglable from "./components/Togglable";
-import BlogForm from "./components/BlogForm";
-import LoginForm from "./components/LoginForm";
-import usersService from "./services/users";
-import { initializeBlogs } from "./reducers/blogReducer";
-import { setUser, logout } from "./reducers/userReducer";
-import Users from "./components/Users";
-import User from "./components/User";
-import Blog from "./components/Blog";
-import { Routes, Route, Link } from "react-router-dom";
-import { Container, Button, Alert, Navbar, Nav } from "react-bootstrap";
+import React from 'react'
+import { useEffect, useState, useRef } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import BlogList from './components/BlogList'
+import blogService from './services/blogs'
+import Notification from './components/Notification'
+import Togglable from './components/Togglable'
+import BlogForm from './components/BlogForm'
+import LoginForm from './components/LoginForm'
+import usersService from './services/users'
+import { initializeBlogs } from './reducers/blogReducer'
+import { setUser, logout } from './reducers/userReducer'
+import Users from './components/Users'
+import User from './components/User'
+import Blog from './components/Blog'
+import { Routes, Route, Link } from 'react-router-dom'
+import { Container, Button, Navbar, Nav } from 'react-bootstrap'
 
 const App = () => {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([])
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const user = useSelector((state) => {
     if (state.login === null) {
-      return null;
+      return null
     }
-    return state.login;
-  });
-  const blogs = useSelector((state) => state.blogs);
+    return state.login
+  })
+  const blogs = useSelector((state) => state.blogs)
 
   useEffect(() => {
-    dispatch(initializeBlogs());
-  }, [dispatch]);
+    dispatch(initializeBlogs())
+  }, [dispatch])
 
   useEffect(() => {
-    const loggedUserJSON = window.localStorage.getItem("loggedBloglistUser");
+    const loggedUserJSON = window.localStorage.getItem('loggedBloglistUser')
     if (loggedUserJSON) {
-      const user = JSON.parse(loggedUserJSON);
-      dispatch(setUser(user));
-      blogService.setToken(user.token);
+      const user = JSON.parse(loggedUserJSON)
+      dispatch(setUser(user))
+      blogService.setToken(user.token)
     }
-  }, []);
+  }, [])
 
   useEffect(() => {
     usersService.getAll().then((users) => {
-      setUsers(users);
-    });
-  }, []);
+      setUsers(users)
+    })
+  }, [dispatch])
 
   const padding = {
     padding: 5,
-  };
+  }
 
   if (user === null || Object.keys(user).length === 0) {
     return (
       <div className="container">
         <LoginForm />
       </div>
-    );
+    )
   }
 
   return (
@@ -105,11 +106,11 @@ const App = () => {
       </Routes>
       <br />
     </div>
-  );
-};
+  )
+}
 
 const Home = ({ user }) => {
-  const blogFormRef = useRef();
+  const blogFormRef = useRef()
 
   return (
     <div>
@@ -122,7 +123,7 @@ const Home = ({ user }) => {
       <br />
       <BlogList user={user} />
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App

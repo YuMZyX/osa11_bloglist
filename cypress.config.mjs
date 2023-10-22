@@ -7,7 +7,7 @@ export default defineConfig({
     setupNodeEvents(on, config) { // eslint-disable-line no-unused-vars
       // implement node event listeners here
     },
-    baseUrl: 'http://localhost:5173',
+    baseUrl: 'http://localhost:3003',
     env: {
       BACKEND: 'http://localhost:3003/api',
     },
