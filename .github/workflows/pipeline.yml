@@ -47,5 +47,22 @@ jobs:
           interval: 15
           timeout: 500
 
+  tag_release:
+    needs: [deployment_pipeline]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    if: ${{ !contains( toJson(github.event.commits.*.message), '#skip') && github.event_name == 'push' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.67.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
+
 
         
